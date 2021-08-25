@@ -1,0 +1,19 @@
+{
+    "name": "thundar/module-ratelimit-magento2",
+    "description": "",
+    "type": "magento2-module",
+    "license": "proprietary",
+    "require": {
+        "symfony/rate-limiter": "^5.3",
+        "magento/framework": "103.0.*",
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Thundar\\RateLimit\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Cache/etc/cache.xsd">
+    <type name="rate_limit" translate="label,description" instance="Thundar\RateLimit\Model\Cache\Type\RateLimit">
+        <label>Request rate limiter</label>
+        <description>Limits some endpoints</description>
+    </type>
+</config>

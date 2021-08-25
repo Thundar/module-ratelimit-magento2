@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="thundarDefaultRateConfig" type="Symfony\Component\RateLimiter\RateLimiterFactory">
+        <arguments>
+            <argument name="config" xsi:type="array">
+                <item name="id" xsi:type="string">thundarDefaultRateConfig</item>
+                <item name="policy" xsi:type="string">sliding_window</item>
+                <item name="limit" xsi:type="number">30</item>
+                <item name="interval" xsi:type="string">60 minutes</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Thundar\RateLimit\Model\Service\WebApiRateLimit">
+        <arguments>
+            <argument name="factory" xsi:type="object">thundarDefaultRateConfig</argument>
+        </arguments>
+    </type>
+
+    <type name="Thundar\RateLimit\Model\Service\FrontendRateLimit">
+        <arguments>
+            <argument name="factory" xsi:type="object">thundarDefaultRateConfig</argument>
+        </arguments>
+    </type>
+
+    <preference for="Symfony\Component\RateLimiter\Storage\StorageInterface" type="Thundar\RateLimit\Model\CacheStorageBridge"/>
+</config>
